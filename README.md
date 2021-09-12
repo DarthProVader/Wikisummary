@@ -9,3 +9,5 @@ In order to run the program you need to install wikipedia package:
 `pip install wikipedia`
 
 To get rid of the package warning follow instruction in the message. 
+Default settings are for czech language. To change it replace `cz` for your desired language here:
+`wikipedia.set_lang("cz")`
