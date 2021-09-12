@@ -5,6 +5,7 @@ wikipedia.set_lang("cz")
 db = {}
 
 def wiki_search(word):
+    """This function takes one string, searches wikipedia for that word and returns summary of the searched page. If page does not exist it returns list of suggestions"""
     try:
         # get list of pages based on word search, if it matches return the page summary
         search_list = wikipedia.search(word)
@@ -31,7 +32,7 @@ def wiki_search(word):
 
 
 def check_db(word):
-    """this function checks database for previous searches"""
+    """This function takes one string and checks database for previous searches. If found it returns the value for searched key, if not it returns False"""
     result = False
     for key in db.keys():
         if word == key:
