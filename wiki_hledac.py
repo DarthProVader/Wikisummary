@@ -7,7 +7,7 @@ db = {}
 def wiki_search(word):
     """This function takes one string, searches wikipedia for that word and returns summary of the searched page. If page does not exist it returns list of suggestions"""
     try:
-        # get list of pages based on word search, if it matches return the page summary
+        # get list of pages based on word search, if first result matches the search return the page summary
         search_list = wikipedia.search(word)
         if search_list[0].lower() == word.lower():
             result = wikipedia.summary(word)
