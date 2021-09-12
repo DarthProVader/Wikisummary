@@ -6,6 +6,6 @@ If the page does not exist or it's disambiguation page program returns suggestio
 
 In order to run the program you need to install wikipedia package:
 
-'pip install wikipedia'
+`pip install wikipedia`
 
 To get rid of the package warning follow instruction in the message. 
