@@ -1,11 +1,15 @@
 import wikipedia
-from flask import Flask, request
+from flask import Flask, request, render_template
 from flask_restful import Resource, Api
 
 app = Flask(__name__)
 api = Api(app)
 
 wikipedia.set_lang("cz")
+
+@app.route("/")
+def test_page():
+    return render_template("index.html")
 
 class WikiSearch(Resource):
     def get(self,word):

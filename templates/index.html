@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiki Summary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="first">
+        <h1>Wiki Summary search</h1>
+        <form class="search-form" action="" method="get">
+            <input name="searchWiki" type="text" placeholder="Put your search here">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <div class="second">
+
+    </div>
+    <script>
+                    
+            function checkLocalStorage(word){
+                let lsWord = localStorage.getItem(word)
+                if (lsWord != null){
+                    return lsWord
+                }else{
+                    return null
+                }
+            }
+
+            function callApi(word){
+                let url = `http://127.0.0.1:5000/search/${word}`
+                let resp = fetch(url,{
+                    method: 'GET',
+                    headers: {
+                        'Content-type': 'application/json; charset=UTF-8'
+                    }
+                })
+                .then(r => 
+                    r.json()
+                .then(data => {
+                    let sWord = Object.keys(data)[0]
+                    let res = Object.values(data)[0]
+
+                    localStorage.setItem(sWord, res)
+                }))
+            }
+            async function test1(thing){
+                await callApi(thing)
+                console.log(checkLocalStorage(thing))
+            }
+                /* .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json()
+                }
+                    .then(function(data) {
+                        let sWord = Object.keys(data)[0]
+                        let res = Object.values(data)[0]
+
+                        localStorage.setItem(sWord, res)
+                })) */
+            
+
+            document.querySelector(".search-form").addEventListener("submit", function(event){
+                event.preventDefault()
+
+                let searchedWord = event.target.elements.searchWiki.value
+                
+                if (checkLocalStorage(searchedWord) != null){
+
+                    let par = document.createElement("p")
+                    par.innerHTML = checkLocalStorage(searchedWord)
+                    document.querySelector(".second").appendChild(par)
+                }
+                else{
+                    let url = `http://127.0.0.1:5000/search/${searchedWord}`
+                    fetch(url,{
+                        method: 'GET',
+                        headers: {
+                            'Content-type': 'application/json; charset=UTF-8'
+                        }
+                    })
+                    .then(r => r.json()
+                    .then(data => {
+
+                        let sWord = Object.keys(data)[0]
+                        let res = Object.values(data)[0]
+
+                        if (typeof res == "string"){
+                            
+                            localStorage.setItem(sWord, res)
+
+                            console.log(res)
+
+                            let par = document.createElement("p")
+                            par.innerHTML = res
+                            document.querySelector(".second").appendChild(par)
+                        }
+                        else{
+                            console.log("Zadaný text se vysktuje v článcích s tímto názvem:")
+                        }
+
+                    }))
+                }
+            })
+
+            /*  1, check local storage for searched word
+                2, if not there, call api and write out the result 
+                    if there write out the contents
+                3, if not there save word + contents to local storage, save only if it was the summary text (not suggested pages for example)*/
+    </script>
+</body>
+</html>
