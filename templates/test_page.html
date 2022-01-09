@@ -1,0 +1,52 @@
+{% extends "base.html"%}
+{% block content %}
+
+<div class="wrapper">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #111111;">
+      <a class="navbar-brand d-lg-none" href="#"><img src="{{ url_for('static',filename='img/wycuc-black-sm.png') }}"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbarToggler7"
+          aria-controls="myNavbarToggler7" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="myNavbarToggler7">
+          <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Hledat</a>
+              </li>
+              <a class="d-none d-lg-block" href="#"><img src="{{ url_for('static',filename='img/wycuc-black-sm.png') }}"></a>
+              <li class="nav-item">
+                  <a class="nav-link" href="#">Projekt</a>
+              </li>
+          </ul>
+      </div>
+  </nav>
+  <h1>Zadejte výraz a výsledek bude jeho shrnutí (první odstavec) na wikipedii.</h1>
+
+  <div class="search">
+      <!-- <input class="search-form"id="inp" type="text" placeholder="Zadejte hledaný výraz"> -->
+      <form class="search-form" action="" method="get">
+        <input name="searchWiki" id="inp" type="text" placeholder="Zadejte hledaný výraz">
+        <button id="vycuc" type="submit" class="btn btn-outline-warning">Vycucnout</button>
+    </form>
+  </div>
+
+  <!-- <button id="vycuc" type="button" class="btn btn-outline-warning">Vycucnout</button> -->
+
+
+  <div class="second">
+
+  </div>
+  <div class="about">
+      <h1>O co jde?</h1><br>
+      <p>Projekt vznikl jako nápad v návaznosti na úkol, který jsem dostal při (neúspěšném) pohovoru na pozici vývojáře.
+          Zadáním bylo vytvořit program v pythonu do příkazové řádky, který po zadání slova vytáhne z wikipedie souhr (první sekci) tohoto výrazu.
+          Program se mi podařilo udělat, ale projevil se nedostatek zkušeností, pozici jsem tedy nedostal. <br><br>
+          Nicméně dalo mi to motivaci na něm pracovat dále a jelikož jsem se zrovna učil s Javascriptem, rozhodl jsem se jej předělat do webové aplikace.
+          Proto jsem původní program předělal na API a vytvořil frontend. <br><br>Výsledkem je tato jednoduchá stránka "Wýcuc".
+      </p>
+
+  </div>
+</div>
+
+
+{% endblock %}

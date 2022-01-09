@@ -11,6 +11,8 @@ function checkLocalStorage(word) {
 
 document.querySelector(".search-form").addEventListener("submit", function (event) {
     event.preventDefault()
+    /* let result = document.querySelector(".result")
+    console.log(result) */
     document.querySelector(".second").innerHTML = ""
 
     let searchedWord = event.target.elements.searchWiki.value
@@ -53,17 +55,14 @@ document.querySelector(".search-form").addEventListener("submit", function (even
 
                             localStorage.setItem(sWord, res)
 
-                            console.log(res)
-
                             let par = document.createElement("p")
                             par.innerHTML = res
                             document.querySelector(".second").appendChild(par)
                         }
                         //list of pages if searched word is a disambiguation page 
                         else {
-                            console.log(`Článek s tímto názvem: "${searchedWord}" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem: ${data.suggested_pages}`)
                             let par = document.createElement("p")
-                            par.innerHTML = `Článek s tímto názvem: "${searchedWord}" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem: ${data.suggested_pages}`
+                            par.innerHTML = `Článek s tímto názvem: "${searchedWord}" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem: <li> ${data.suggested_pages}`
                             document.querySelector(".second").appendChild(par)
                         }
 

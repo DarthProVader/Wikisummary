@@ -9,7 +9,7 @@ wikipedia.set_lang("cz")
 
 @app.route("/")
 def test_page():
-    return render_template("main_page.html")
+    return render_template("test_page.html")
 
 class WikiSearch(Resource):
 
