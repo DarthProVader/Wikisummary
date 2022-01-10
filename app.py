@@ -21,9 +21,6 @@ class WikiSearch(Resource):
             search_list = wikipedia.search(word)
             if search_list[0].lower() == word.lower():
                 result = wikipedia.summary(word)
-                #add_db = {word: result}
-                #db.update(add_db)
-                print(result)
                 return {word:result}
             # if not return list of pages containing search word
             else:
@@ -31,7 +28,6 @@ class WikiSearch(Resource):
                     f"Článek s tímto názvem: \"{word}\" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem:")
                 suggested_pages = []
                 for item in search_list:
-                    print(item)
                     suggested_pages.append(item)
                     return {"suggested_pages":suggested_pages}
         # return list of pages if searched word is a disambiguation page
@@ -41,7 +37,6 @@ class WikiSearch(Resource):
                 f"Článek s tímto názvem: \"{word}\" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem:")
             suggested_pages = []
             for item in err.options:
-                print(item)
                 suggested_pages.append(item)
                 return {"suggested_pages":suggested_pages}
         # return page does not exists if nonsense input submitted
