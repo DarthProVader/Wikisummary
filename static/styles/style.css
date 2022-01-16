@@ -1,151 +1,164 @@
 
 html, body {
-    height: 100%;
-    margin: 0;
-  }
-  
-  
-  .navbar .navbar-nav .nav-link {
-    color: #CBB26B;
-    font-size: 2.1em;
-    margin-top: 25%;
-  }
-  
-  .navbar .navbar-nav .nav-link:hover{
-    color: azure;
-  }
-  
-  .navbar .navbar-nav .nav-link:visited{
-    color: #CBB26B;
-  }
-  
-  .navbar-logo-centered .navbar-nav .nav-link{
-    padding: .5em 1em;
-  }
-  
-  .wrapper{
-    min-height: 100%;
-    background-color: #111111;
-    text-align: center;
-  }
-  
+  height: 100%;
+  margin: 0;
+}
+
+
+.navbar .navbar-nav .nav-link {
+  color: #CBB26B;
+  font-size: 150%;
+}
+
+.navbar .navbar-nav .nav-link:hover{
+  color: #CBB26B;
+  border-bottom: solid 1px #CBB26B;
+}
+
+.navbar .navbar-nav .nav-link:visited{
+  color: #CBB26B;
+}
+
+.wrapper{
+  min-height: 100%;
+  background-color: #111111;
+  text-align: center;
+}
+
+h1{
+  margin-top: 150px;
+  margin-bottom: 20px;
+  color: #CBB26B;
+  font-size: 120%;
+}
+
+
+
+.search{
+  margin: auto;
+  margin-top: 50px;
+  height: 100%;
+  width: 50%;
+}
+
+#inp{
+  color: antiquewhite;
+  font-size: 100%;
+  height: 100px;
+  width: 100%;
+  border: solid 7px #CBB26B;
+  border-radius: 20px;
+  background-color: #111111;
+  text-align: center;
+}
+
+input:focus::placeholder {
+  color: transparent;
+}
+
+.btn-outline-warning{
+  font-size: 20px;
+  margin-top: 20px;
+  color: #CBB26B;
+  border-color: #CBB26B;
+  width: 35vw;
+  margin-bottom: 20px;
+}
+
+.btn-outline-warning:hover{
+  background-color: #CBB26B;
+}
+
+p{
+  color: aliceblue;
+  text-align:start;
+  margin: auto;
+  margin-top: 20px;
+  width: 50%;
+}
+
+.about{
+  display: none;
+}
+
+@media (max-width: 700px){
   h1{
-    margin-top: 150px;
-    margin-bottom: 20px;
-    color: #CBB26B;
-    font-size: 30px;
+    font-size: 90%;
   }
-  
-  .search{
-    margin: auto;
-    margin-top: 50px;
-    height: 100%;
-    width: 50%;
-  }
-  
-  #inp{
-    color: antiquewhite;
-    font-size: 30px;
-    height: 100px;
-    width: 100%;
-    border: solid 7px #CBB26B;
-    border-radius: 20px;
-    background-color: #111111;
-    text-align: center;
-  }
-  
-  input:focus::placeholder {
-    color: transparent;
-  }
-  
-  .btn-outline-warning{
-    font-size: 20px;
-    margin-top: 20px;
-    color: #CBB26B;
-    border-color: #CBB26B;
-    width: 300px;
-    margin-bottom: 20px;
-  }
-  
-  .btn-outline-warning:hover{
-    background-color: #CBB26B;
-  }
-  
   p{
-    color: aliceblue;
-    text-align:start;
-    margin: auto;
-    margin-top: 20px;
-    width: 45%;
+    font-size: 80%;
+    width: 80%;
   }
-
-  .about{
-    display: none;
+  .search{
+    width: 80%;
   }
+}
 
-  a:visited{
-    color: aliceblue;
+@media (max-width: 360px) and (max-height: 640px){
+  .navbar .navbar-nav .nav-link{
+    font-size: 150%;
   }
+}
 
 
-  .loader,
+.loader,
 .loader:before,
 .loader:after {
-  border-radius: 50%;
-  width: 2.5em;
-  height: 2.5em;
-  -webkit-animation-fill-mode: both;
-  animation-fill-mode: both;
-  -webkit-animation: load7 1.8s infinite ease-in-out;
-  animation: load7 1.8s infinite ease-in-out;
+border-radius: 50%;
+width: 2.5em;
+height: 2.5em;
+-webkit-animation-fill-mode: both;
+animation-fill-mode: both;
+-webkit-animation: load7 1.8s infinite ease-in-out;
+animation: load7 1.8s infinite ease-in-out;
 }
 .loader {
-  color: #ffffff;
-  font-size: 10px;
-  margin: 80px auto;
-  position: relative;
-  text-indent: -9999em;
-  -webkit-transform: translateZ(0);
-  -ms-transform: translateZ(0);
-  transform: translateZ(0);
-  -webkit-animation-delay: -0.16s;
-  animation-delay: -0.16s;
+color: #ffffff;
+font-size: 10px;
+margin: 80px auto;
+position: relative;
+text-indent: -9999em;
+-webkit-transform: translateZ(0);
+-ms-transform: translateZ(0);
+transform: translateZ(0);
+-webkit-animation-delay: -0.16s;
+animation-delay: -0.16s;
 }
 .loader:before,
 .loader:after {
-  content: '';
-  position: absolute;
-  top: 0;
+content: '';
+position: absolute;
+top: 0;
 }
 .loader:before {
-  left: -3.5em;
-  -webkit-animation-delay: -0.32s;
-  animation-delay: -0.32s;
+left: -3.5em;
+-webkit-animation-delay: -0.32s;
+animation-delay: -0.32s;
 }
 .loader:after {
-  left: 3.5em;
+left: 3.5em;
 }
 @-webkit-keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
+0%,
+80%,
+100% {
+  box-shadow: 0 2.5em 0 -1.3em;
+}
+40% {
+  box-shadow: 0 2.5em 0 0;
+}
 }
 @keyframes load7 {
-  0%,
-  80%,
-  100% {
-    box-shadow: 0 2.5em 0 -1.3em;
-  }
-  40% {
-    box-shadow: 0 2.5em 0 0;
-  }
+0%,
+80%,
+100% {
+  box-shadow: 0 2.5em 0 -1.3em;
 }
-  
-  
+40% {
+  box-shadow: 0 2.5em 0 0;
+}
+}
+
+
 
 

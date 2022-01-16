@@ -24,6 +24,8 @@ function checkLocalStorage(word) {
     }
 }
 
+let searchButton = document.querySelector("#vycuc")
+let wordInput = document.querySelector("#inp")
 let loader = `<div class="loader">Loading...</div>`
 
 document.querySelector(".search-form").addEventListener("submit", function (event) {
@@ -31,6 +33,15 @@ document.querySelector(".search-form").addEventListener("submit", function (even
     document.querySelector(".second").innerHTML = loader
 
     let searchedWord = event.target.elements.searchWiki.value
+
+    if (searchedWord == ""){
+        let par = document.createElement("p")
+        par.innerHTML = "Nezadán žádný výraz"
+        par.style.textAlign = "center"
+        document.querySelector(".second").innerHTML = ""
+        document.querySelector(".second").appendChild(par)
+        return null
+    }
 
     //check local storage for searched word if found write on the screen
     if (checkLocalStorage(searchedWord) != null) {
