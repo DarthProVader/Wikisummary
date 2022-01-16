@@ -4,12 +4,12 @@ let searchPage = document.querySelector(".search")
 let aboutPage = document.querySelector(".about")
 let resultPage = document.querySelector(".second")
 
-document.querySelector(".search-link").addEventListener("click", function(){
+document.querySelector(".search-link").addEventListener("click", function () {
     searchPage.style.display = "block"
     resultPage.style.display = "block"
     aboutPage.style.display = "none"
 })
-document.querySelector(".about-link").addEventListener("click", function(){
+document.querySelector(".about-link").addEventListener("click", function () {
     searchPage.style.display = "none"
     resultPage.style.display = "none"
     aboutPage.style.display = "block"
@@ -30,16 +30,19 @@ let loader = `<div class="loader">Loading...</div>`
 
 document.querySelector(".search-form").addEventListener("submit", function (event) {
     event.preventDefault()
-    document.querySelector(".second").innerHTML = loader
+    resultPage.innerHTML = loader
 
     let searchedWord = event.target.elements.searchWiki.value
+    let searchedWordPar = document.createElement("p")
+    searchedWordPar.innerHTML = `Hledaný výraz: ${searchedWord}`
+    searchedWordPar.style.textAlign = "center"
 
-    if (searchedWord == ""){
+    if (searchedWord == "") {
         let par = document.createElement("p")
         par.innerHTML = "Nezadán žádný výraz"
         par.style.textAlign = "center"
-        document.querySelector(".second").innerHTML = ""
-        document.querySelector(".second").appendChild(par)
+        resultPage.innerHTML = ""
+        resultPage.appendChild(par)
         return null
     }
 
@@ -48,8 +51,9 @@ document.querySelector(".search-form").addEventListener("submit", function (even
 
         let par = document.createElement("p")
         par.innerHTML = checkLocalStorage(searchedWord)
-        document.querySelector(".second").innerHTML = ""
-        document.querySelector(".second").appendChild(par)
+        resultPage.innerHTML = ""
+        resultPage.appendChild(searchedWordPar)
+        resultPage.appendChild(par)
     }
     //use API for finding the summary of the searched word
     else {
@@ -66,8 +70,10 @@ document.querySelector(".search-form").addEventListener("submit", function (even
 
                     let par = document.createElement("p")
                     par.innerHTML = `Zadaný výraz neexistuje, zkuste prosím jiný.`
-                    document.querySelector(".second").innerHTML = ""
-                    document.querySelector(".second").appendChild(par)
+                    par.style.textAlign = "center"
+                    resultPage.innerHTML = ""
+                    resultPage.appendChild(searchedWordPar)
+                    resultPage.appendChild(par)
 
                     return null //for stopping the rest of the code from executing
 
@@ -85,15 +91,17 @@ document.querySelector(".search-form").addEventListener("submit", function (even
 
                             let par = document.createElement("p")
                             par.innerHTML = res
-                            document.querySelector(".second").innerHTML = ""
-                            document.querySelector(".second").appendChild(par)
+                            resultPage.innerHTML = ""
+                            resultPage.appendChild(searchedWordPar)
+                            resultPage.appendChild(par)
                         }
                         //list of pages if searched word is a disambiguation page 
                         else {
                             let par = document.createElement("p")
                             par.innerHTML = `Článek s tímto názvem: "${searchedWord}" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem: <li> ${data.suggested_pages}`
-                            document.querySelector(".second").innerHTML = ""
-                            document.querySelector(".second").appendChild(par)
+                            resultPage.innerHTML = ""
+                            resultPage.appendChild(searchedWordPar)
+                            resultPage.appendChild(par)
                         }
 
                     })
