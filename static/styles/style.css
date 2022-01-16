@@ -81,6 +81,17 @@ p{
   display: none;
 }
 
+.github{
+  color: #CBB26B;
+  text-align: center;
+  text-decoration: none;
+}
+
+.github:hover{
+  color: #CBB26B;
+  border-bottom: #CBB26B solid 1px;
+}
+
 @media (max-width: 700px){
   h1{
     font-size: 90%;

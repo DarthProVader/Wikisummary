@@ -36,7 +36,6 @@ class WikiSearch(Resource):
         except wikipedia.exceptions.DisambiguationError as err:
 
             suggested_pages = []
-            print(err)
             for item in err.options:
                 suggested_pages.append(item)
                 return {"suggested_pages": suggested_pages}
@@ -50,4 +49,4 @@ class WikiSearch(Resource):
 api.add_resource(WikiSearch, "/search/<string:word>")
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
