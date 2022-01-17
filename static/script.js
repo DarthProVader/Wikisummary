@@ -98,7 +98,11 @@ document.querySelector(".search-form").addEventListener("submit", function (even
                         //list of pages if searched word is a disambiguation page 
                         else {
                             let par = document.createElement("p")
-                            par.innerHTML = `Článek s tímto názvem: "${searchedWord}" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem: <li> ${data.suggested_pages}`
+                            let suggPages = ""
+                            data.suggested_pages.forEach(element => {
+                                suggPages += `<li>${element}`
+                            });
+                            par.innerHTML = `Článek s tímto názvem: "${searchedWord}" nebyl nalezen. Zadaný text se vysktuje v článcích s tímto názvem: ${suggPages}`
                             resultPage.innerHTML = ""
                             resultPage.appendChild(searchedWordPar)
                             resultPage.appendChild(par)

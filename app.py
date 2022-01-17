@@ -30,7 +30,7 @@ class WikiSearch(Resource):
                 suggested_pages = []
                 for item in search_list:
                     suggested_pages.append(item)
-                    return {"suggested_pages": suggested_pages}
+                return {"suggested_pages": suggested_pages}
 
         # return list of pages if searched word is a disambiguation page
         except wikipedia.exceptions.DisambiguationError as err:
@@ -38,7 +38,7 @@ class WikiSearch(Resource):
             suggested_pages = []
             for item in err.options:
                 suggested_pages.append(item)
-                return {"suggested_pages": suggested_pages}
+            return {"suggested_pages": suggested_pages}
         # return page does not exists if nonsense input submitted
         except wikipedia.exceptions.PageError and IndexError:
 
@@ -49,4 +49,4 @@ class WikiSearch(Resource):
 api.add_resource(WikiSearch, "/search/<string:word>")
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

@@ -32,7 +32,9 @@ h1{
   font-size: 120%;
 }
 
-
+.about-link{
+  margin-left: 10px;
+}
 
 .search{
   margin: auto;
